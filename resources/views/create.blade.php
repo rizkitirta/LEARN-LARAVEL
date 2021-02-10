@@ -2,10 +2,9 @@
 @section('content')
 
     <div class="container">
-        <h1>Halaman Pemesanan</h1>
         <!-- Default form register -->
         <form class="text-center border border-light p-5" action="{{ route('simpan') }}" method="POST">
-          {{ csrf_field() }}
+            {{ csrf_field() }}
             <p class=" h4 mb-4">Form Pemesanan Es Krim</p>
 
             <div class="form-row mb-4">
@@ -19,8 +18,17 @@
                 </div>
             </div>
 
-            <!-- Pesan -->
-            <input type="text" id="pesan" class="form-control mb-4" placeholder="Ketik Pesanan" name="pesan">
+            <!-- Alamat -->
+            <input type="text" id="alamat" class="form-control mb-4" placeholder="Alamat" name="alamat">
+
+            <label for="barang_id">Pilih Es Krim</label>
+            <select name="barang_id" id="barang"  class="form-control mb-4">
+                @foreach ($list as $item)
+                    <option value="{{ $item->id }} ">
+                        {{ $item->nama_barang }} - Rp {{ number_format($item->harga) }}
+                    </option>
+                @endforeach
+            </select>
 
             <!-- E-mail -->
             <input type="email" id="email" class="form-control mb-4" placeholder="E-mail" name="email">

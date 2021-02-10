@@ -14,7 +14,9 @@
                 <tr class="bg-dark text-white">
                     <th scope="col">No</th>
                     <th scope="col">Nama Depan</th>
-                    <th scope="col">Pesanan</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">Pesan</th>
+                    <th scope="col">Harga</th>
                     <th scope="col">Email</th>
                     <th scope="col">No Hp</th>
                     <th scope="col">Action</th>
@@ -25,7 +27,9 @@
                     <tr>
                         <th scope="row">{{ $loop->iteration }} </th>
                         <td>{{ $x->nama_depan }}</td>
-                        <td>{{ $x->pesan }}</td>
+                        <td>{{ $x->alamat }}</td>
+                        <td>{{ $x->barang->nama_barang }}</td>
+                        <td>{{ number_format($x->barang->harga) }}</td>
                         <td>{{ $x->email }}</td>
                         <td>{{ $x->nohp }}</td>
                         <td>

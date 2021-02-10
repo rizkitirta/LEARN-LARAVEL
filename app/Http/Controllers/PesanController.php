@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pesan;
+use App\Barang;
 
 class PesanController extends Controller
 {
@@ -14,7 +15,8 @@ class PesanController extends Controller
 
     public function create()
     {
-        return view('create');
+        $list = Barang::all();
+        return view('create', compact('list'));
     }
 
      public function thanks()
@@ -27,7 +29,7 @@ class PesanController extends Controller
      $this->validate($request, [
          'namadepan' => 'required',
          'namabel' => 'required',
-         'pesan' => 'required',
+         'alamat' => 'required',
          'email' => 'required',
          'nohp' => 'required'
      ]);
@@ -35,9 +37,10 @@ class PesanController extends Controller
      $pesan = new Pesan;
      $pesan->nama_depan = $request->namadepan;
      $pesan->nama_bel = $request->namabel;
-     $pesan->pesan = $request->pesan;
+     $pesan->alamat = $request->alamat;
      $pesan->email = $request->email;
      $pesan->nohp = $request->nohp;
+     $pesan->barang_id = $request->barang_id;
      $pesan->save();
      return redirect(route('thanks'))->with('successMsg', 'Pesanan Berhasil Ditambahkan!');
     }
