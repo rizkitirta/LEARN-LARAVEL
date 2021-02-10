@@ -54,5 +54,32 @@ class PesanController extends Controller
         return view('admin.edit', compact('x'));
     }
 
+    public function update(Request $request, $id)
+    {
+         $this->validate($request, [
+         'namadepan' => 'required',
+         'namabel' => 'required',
+         'pesan' => 'required',
+         'email' => 'required',
+         'nohp' => 'required'
+     ]);
+
+     $pesan = Pesan::findorfail($id);
+     $pesan->nama_depan = $request->namadepan;
+     $pesan->nama_bel = $request->namabel;
+     $pesan->pesan = $request->pesan;
+     $pesan->email = $request->email;
+     $pesan->nohp = $request->nohp;
+     $pesan->save();
+     return redirect(route('tampil'))->with('successMsg', 'Pesanan Berhasil Diupdate!');
+    }
+
+
+    public function delete($id)
+    {
+        Pesan::findorfail($id)->delete();
+        return redirect(route('tampil'))->with('successMsg', 'Pesanan Berhasil Dihapus!');
+    }
+
    
 }

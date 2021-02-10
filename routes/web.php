@@ -20,12 +20,10 @@ Route::get('/thanks','PesanController@thanks')->name('thanks');
 Route::get('/adm','AdminController@index')->name('admin');
 Route::get('/adm/pesan','PesanController@show')->name('tampil');
 
-//Router edit
+//Router Edit
 Route::get('/adm/edit/{id}','PesanController@edit')->name('edit');
 Route::post('/adm/update/{id}','PesanController@update')->name('update');
 
-Route::get('/clear', function() {
-	Artisan::call('cache:clear');
+//Router Delete
+Route::delete('/adm/delete/{id}', 'PesanController@delete')->name('delete');
 
-	dd("cache Clear All");
-});

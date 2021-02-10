@@ -1,5 +1,5 @@
-@extends('admin.adm-main');
-@section('admin-content');
+@extends('admin.adm-main')
+@section('admin-content')
 
     <div class="container">
         <h2>Data Pesanan</h2>
@@ -11,7 +11,7 @@
 
         <table class="table">
             <thead>
-                <tr>
+                <tr class="bg-dark text-white">
                     <th scope="col">No</th>
                     <th scope="col">Nama Depan</th>
                     <th scope="col">Pesanan</th>
@@ -28,9 +28,23 @@
                         <td>{{ $x->pesan }}</td>
                         <td>{{ $x->email }}</td>
                         <td>{{ $x->nohp }}</td>
-                        <td> 
-							<a href="{{ route('edit',$x->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a> |
-                            <a href="" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                        <td>
+                            <a href="{{ route('edit', $x->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i>
+                                Edit</a> |
+
+                            <form method="POST" id="delete-form-{{ $x->id }}"
+                                action="{{ route('delete', $x->id) }} " style="display: none">
+                                {{ csrf_field() }}
+                                {{ method_field('delete') }}
+                            </form>
+                            <a onclick=" if(confirm('Hapus pesanan')){
+                                event.preventDefault();
+                                document.getElementById('delete-form-{{ $x->id }}').submit();
+                               }else
+                               { event.preventDefault(); }							
+                               
+                               " href="" class="btn btn-danger"><i class="fas fa-trash"></i>
+                                Delete</a>
                         </td>
                     </tr>
                 @endforeach

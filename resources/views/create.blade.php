@@ -5,7 +5,7 @@
         <h1>Halaman Pemesanan</h1>
         <!-- Default form register -->
         <form class="text-center border border-light p-5" action="{{ route('simpan') }}" method="POST">
-
+          {{ csrf_field() }}
             <p class=" h4 mb-4">Form Pemesanan Es Krim</p>
 
             <div class="form-row mb-4">

@@ -1,13 +1,13 @@
-@extends('layouts.main')
-@section('content')
+@extends('admin.adm-main')
+@section('admin-content')
 
     <div class="container">
-        <h1>Halaman Pemesanan</h1>
+        <h1>Halaman Edit Pesanan</h1>
         <!-- Default form register -->
 		<form class="text-center border border-light p-5" action="{{ route('update',$x->id) }}" method="POST">
 			{{ csrf_field() }}
 
-            <p class=" h4 mb-4">Form Edit Pemesanan</p>
+            <p class=" h4 mb-4">Form Edit Pesanan</p>
 
             <div class="form-row mb-4">
                 <div class="col">
@@ -37,7 +37,7 @@
 			 name="nohp"  value="{{ $x->nohp }} ">
 
             <!-- Sign up button -->
-            <button class="btn btn-info my-4 btn-block" type="submit">Pesan Sekarang</button>
+            <button class="btn btn-info my-4 btn-block" type="submit">Update Pesanan</button>
 
         </form>
         <!-- Default form register -->
