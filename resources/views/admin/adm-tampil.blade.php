@@ -27,8 +27,11 @@
                         <td>{{ $x->nama_depan }}</td>
                         <td>{{ $x->pesan }}</td>
                         <td>{{ $x->email }}</td>
-						<td>{{ $x->nohp }}</td>
-						<td>Edit | Delete</td>
+                        <td>{{ $x->nohp }}</td>
+                        <td> 
+							<a href="{{ route('edit',$x->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a> |
+                            <a href="" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

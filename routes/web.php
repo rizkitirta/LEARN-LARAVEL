@@ -14,12 +14,15 @@
 Route::get('/','PesanController@index')->name('home');
 Route::get('/create','PesanController@create')->name('buat');
 Route::post('/simpan','PesanController@store')->name('simpan');
-Route::get('/pesanan','PesanController@show')->name('tampil');
 Route::get('/thanks','PesanController@thanks')->name('thanks');
 
 //Router Admin
 Route::get('/adm','AdminController@index')->name('admin');
 Route::get('/adm/pesan','PesanController@show')->name('tampil');
+
+//Router edit
+Route::get('/adm/edit/{id}','PesanController@edit')->name('edit');
+Route::post('/adm/update/{id}','PesanController@update')->name('update');
 
 Route::get('/clear', function() {
 	Artisan::call('cache:clear');

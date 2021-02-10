@@ -48,5 +48,11 @@ class PesanController extends Controller
         return view('admin.adm-tampil', compact('pesan'));
     }
 
+    public function edit($id)       
+    {
+        $x = Pesan::findorfail($id);
+        return view('admin.edit', compact('x'));
+    }
+
    
 }
